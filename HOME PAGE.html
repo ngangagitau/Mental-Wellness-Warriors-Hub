@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Wellness Warriors Hub</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f6f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header img {
+            height: 60px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            font-weight: bold;
+            color: #555;
+            font-size: 1em;
+        }
+
+        nav ul li a:hover {
+            color: #f06292;
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            background: #000;
+            color: #fff;
+            clip-path: ellipse(100% 90% at 50% 10%);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .hero button {
+            background-color: #ffffff;
+            color: #ba68c8;
+            padding: 15px 30px;
+            font-size: 1em;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero button:hover {
+            background-color: #ba68c8;
+            color: #ffffff;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #ffffff;
+            margin: 20px auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .section p {
+            font-size: 1em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #f06292;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        /* Slideshow Styles */
+        .slideshow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .active {
+            display: block;
+        }
+
+        /* Chatbot Modal Styles */
+        .chatbot-modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            max-width: 100%;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+        }
+
+        .chatbot-container {
+            display: flex;
+            flex-direction: column;
+            height: 400px;
+        }
+
+        .chatbot-header {
+            background-color: #ba68c8;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .chatbot-title {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .chatbot-messages {
+            padding: 10px;
+            flex-grow: 1;
+            overflow-y: auto;
+            background-color: #f4f6f9;
+        }
+
+        .chatbot-input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin: 10px;
+            border-radius: 25px;
+            width: calc(100% - 30px);
+        }
+
+        .chatbot-send-btn {
+            background-color: #ba68c8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            width: calc(100% - 30px);
+        }
+
+        .chatbot-send-btn:hover {
+            background-color: #f06292;
+        }
+
+        .chat-message {
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 8px;
+            max-width: 80%;
+            display: inline-block;
+        }
+
+        .user-message {
+            background-color: #f06292;
+            color: white;
+            text-align: right;
+            margin-left: auto;
+        }
+
+        .ai-message {
+            background-color: #ba68c8;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="E:/WhatsApp Image 2024-12-24 at 08.42.04_07773f32.jpg" alt="Mental Wellness Warriors Hub">
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <!-- Slideshow as background -->
+    <div class="slideshow-container">
+        <img src="file:///E:/1V2A9992.jpg" class="slide active" alt="Slide 1">
+        <img src="file:///E:/1V2A9338.jpg" class="slide" alt="Slide 2">
+        <img src="file:///E:/1V2A9303.jpg" class="slide" alt="Slide 3">
+        <img src="file:///E:/1V2A0455.jpg" class="slide" alt="Slide 4">
+        <img src="file:///E:/1V2A0375 (2).jpg" class="slide" alt="Slide 5">
+    </div>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+        <h1>Welcome to Mental Wellness Warriors Hub</h1>
+        <p>Finding Clarity. Uncovering Solutions.</p>
+        <button>Get Started Today</button>
+    </div>
+</section>
+
+<section class="section" id="about">
+    <h2>About Us</h2>
+    <p>At Mental Wellness Warriors Hub, we are driven by a single, unyielding purpose: to foster mental clarity and emotional resilience. </p>
+    <p>Our team of compassionate professionals is dedicated to creating a safe and supportive environment where individuals can share their struggles and triumphs without fear of judgment. We understand that mental wellness is a deeply personal journey, and we are committed to providing tailored support to meet your unique needs. </p>
+    <p>Our mission is guided by values of empathy, inclusion, and empowerment, ensuring that everyone who walks through our doors feels seen, heard, and valued. Together, we can uncover solutions that lead to a more fulfilling and meaningful life. </p>
+</section>
+
+<section class="section" id="services">
+    <h2>Our Services</h2>
+    <p><strong>Counseling Services:</strong> Our team of licensed professionals offers one-on-one counseling sessions to help you navigate personal challenges, including stress, anxiety, depression, and relationship issues. Each session is tailored to provide practical strategies and emotional support to foster mental well-being.</p>
+    <p><strong>Workshops:</strong> We host interactive workshops focusing on mental health topics such as stress management, mindfulness, and self-care practices. These workshops aim to equip participants with tools and techniques to improve their mental health and emotional resilience in everyday life.</p>
+    <p><strong>Support Groups:</strong> Join a supportive community of individuals who are going through similar struggles. Our support groups provide a safe space for sharing experiences, gaining insight, and receiving encouragement from others who understand your journey.</p>
+</section>
+
+<section class="section" id="resources">
+    <h2>Resources</h2>
+    <p>Access a variety of articles, videos, and tools that can help guide you on your mental wellness journey. We provide a collection of expert resources covering topics such as mental health, emotional intelligence, and mindfulness practices. </p>
+</section>
+
+<section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <p>For inquiries or to schedule an appointment, please don't hesitate to reach out to us. Our team is ready to assist you.</p>
+</section>
+
+<footer>
+    <p>&copy; 2024 Mental Wellness Warriors Hub. All Rights Reserved.</p>
+</footer>
+<script>
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function changeSlide(n) {
+        currentSlideIndex += n;
+        if (currentSlideIndex >= slides.length) {
+            currentSlideIndex = 0;
+        } else if (currentSlideIndex < 0) {
+            currentSlideIndex = slides.length - 1;
+        }
+        updateSlides();
+    }
+
+    function updateSlides() {
+        slides.forEach((slide, index) => {
+            slide.classList.remove('active');
+            if (index === currentSlideIndex) {
+                slide.classList.add('active');
+            }
+        });
+    }
+
+    setInterval(() => {
+        changeSlide(1);
+    }, 3000); // Change slide every 3 seconds
+</script>
+
+<!-- Chatbot Modal -->
+<div class="chatbot-modal" id="chatbotModal">
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <span class="chatbot-title">Chat with Us</span>
+            <button class="close-btn" id="closeChatbot">&times;</button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages"></div>
+        <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Ask us anything..." />
+        <button class="chatbot-send-btn" id="chatbotSendBtn">Send</button>
+    </div>
+</div>
+
+<!-- Scripts for Chatbot -->
+<script>
+    // Get elements
+    const chatbotModal = document.getElementById('chatbotModal');
+    const openChatbotBtn = document.querySelector('.hero button');
+    const closeChatbotBtn = document.getElementById('closeChatbot');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+    const chatbotInput = document.getElementById('chatbotInput');
+    const chatbotSendBtn = document.getElementById('chatbotSendBtn');
+
+    // Open Chatbot
+    openChatbotBtn.addEventListener('click', () => {
+        chatbotModal.style.display = 'block';
+    });
+
+    // Close Chatbot
+    closeChatbotBtn.addEventListener('click', () => {
+        chatbotModal.style.display = 'none';
+    });
+
+    // Handle Send Message
+    chatbotSendBtn.addEventListener('click', () => {
+        const userMessage = chatbotInput.value.trim();
+        if (userMessage) {
+            const userMessageElement = document.createElement('div');
+            userMessageElement.classList.add('chat-message', 'user-message');
+            userMessageElement.textContent = userMessage;
+            chatbotMessages.appendChild(userMessageElement);
+            chatbotInput.value = '';
+
+            // Simulate AI response
+            setTimeout(() => {
+                const aiMessageElement = document.createElement('div');
+                aiMessageElement.classList.add('chat-message', 'ai-message');
+                aiMessageElement.textContent = 'Thank you for your message! We will get back to you shortly.';
+                chatbotMessages.appendChild(aiMessageElement);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight; // Scroll to the bottom
+            }, 1000);
+        }
+    });
+</script>
+
+</body>
+</html>

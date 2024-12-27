@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Wellness Warriors Hub</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f6f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header img {
+            height: 60px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            position: relative; /* For dropdown positioning */
+        }
+
+        nav ul li a {
+            font-weight: bold;
+            color: #555;
+            font-size: 1em;
+        }
+
+        nav ul li a:hover {
+            color: #f06292;
+        }
+
+        /* Dropdown Styles */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            min-width: 150px;
+        }
+
+        .dropdown-content li {
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown-content li:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a {
+            color: #555;
+            padding: 10px 15px;
+            display: block;
+            font-size: 0.9em;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f4f6f9;
+            color: #f06292;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            background: #000;
+            color: #fff;
+            clip-path: ellipse(100% 90% at 50% 10%);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .hero button {
+            background-color: #ffffff;
+            color: #ba68c8;
+            padding: 15px 30px;
+            font-size: 1em;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero button:hover {
+            background-color: #ba68c8;
+            color: #ffffff;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #ffffff;
+            margin: 20px auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .section p {
+            font-size: 1em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Upcoming Events Styles */
+        .events-section {
+            padding: 60px 20px;
+            background-color: #f9f9f9;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .event-box {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .event-box h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .event-box p {
+            color: #666;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #f06292;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        /* Slideshow Styles */
+        .slideshow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="file:///E:/MY SITE/pictures/logo.png" alt="Mental Wellness Warriors Hub">
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li class="dropdown">
+                <a href="#about">About Us</a>
+                <ul class="dropdown-content">
+                    <li><a href="file:///E:/MY SITE/AboutUs.html" target="_self">About Us</a></li>
+                    <li><a href="file:///E:/MY SITE/Team.html" target="_self">Team</a></li>
+                    <li><a href="file:///E:/MY SITE/Gallery.html" target="_self">Gallery</a></li>
+                </ul>
+            </li>
+            <!-- Change the Services link to the local path on the E: drive -->
+            <li><a href="file:///E:/MY SITE/Services.html" target="_self">Services</a></li>
+            <li><a href="file:///E:/MY SITE/Resources.html" target="_self">Resources</a></li>
+            <li><a href="file:///E:/MY SITE/Contact Us.html" target="_self">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <!-- Slideshow as background -->
+    <div class="slideshow-container">
+        <img src="file:///E:/MY SITE/pictures/1V2A9992.jpg" class="slide active" alt="Slide 1">
+        <img src="file:///E:/MY SITE/pictures/1V2A9308.jpg" class="slide" alt="Slide 2">
+        <img src="file:///E:/MY SITE/pictures/1V2A9303.jpg" class="slide" alt="Slide 3">
+        <img src="file:///E:/MY SITE/pictures/1V2A0455.jpg" class="slide" alt="Slide 4">
+        <img src="file:///E:/MY SITE/pictures/1V2A0007.jpg" class="slide" alt="Slide 5">
+    </div>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+        <h1>Welcome to Mental Wellness Warriors Hub</h1>
+        <p>Finding Clarity. Uncovering Solutions.</p>
+        <button>Get Started Today</button>
+    </div>
+</section>
+
+<!-- Replacing 'About Us' and 'Our Services' content -->
+<section class="section" id="about">
+    <h2>Upcoming Events</h2>
+    <div class="events-section">
+        <div class="event-box">
+            <h3>Kaa Sober Mental Awareness Cycling & Tree Planting</h3>
+            <p>Season II</p>
+            <p>Date: January 25, 2025 | Location: Othaya</p>
+            <p>Pedal for a Clear Mind, Plant for a Green Future.</p>
+        </div>
+        <div class="event-box">
+            <h3>Kaa Sober Mental Awareness Cycling & Tree Planting</h3>
+            <p>Season I</p>
+            <p>Date: December 21, 2024 | Location: Dedan Kimathi To Mweiga Staduim</p>
+            <p>Pedal for peace, Cycling Towards Mental Wellbeing.</p>
+        </div>
+        <div class="event-box">
+            <h3>Launching Of mental wellness warriors hub</h3>
+            <p>Grand Oppening</p>
+            <p>Date: October 1, 2024 | Location: Othaya</p>
+            <p>Finding Clarity. Uncovering Solutions.</p>
+        </div>
+    </div>
+</section>
+
+
+
+<footer>
+    <p>&copy; 2024 Mental Wellness Warriors Hub. All Rights Reserved.</p>
+</footer>
+
+<script>
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function changeSlide(n) {
+        currentSlideIndex += n;
+        if (currentSlideIndex >= slides.length) {
+            currentSlideIndex = 0;
+        } else if (currentSlideIndex < 0) {
+            currentSlideIndex = slides.length - 1;
+        }
+        updateSlides();
+    }
+
+    function updateSlides() {
+        slides.forEach((slide, index) => {
+            slide.classList.remove('active');
+            if (index === currentSlideIndex) {
+                slide.classList.add('active');
+            }
+        });
+    }
+
+    setInterval(() => {
+        changeSlide(1);
+    }, 3000); // Change slide every 3 seconds
+</script>
+
+</body>
+</html>

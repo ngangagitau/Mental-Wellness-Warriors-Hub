@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Team</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+        .header h1 {
+            font-size: 2em;
+            margin: 0;
+            color: #333;
+        }
+        .header p {
+            font-size: 1em;
+            color: #666;
+            margin: 10px 0 0;
+        }
+        .team-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+            max-width: 1200px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .team-tile {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            padding: 15px;
+            width: 200px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .team-tile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .team-tile h3 {
+            font-size: 1.2em;
+            margin: 10px 0 5px;
+            color: #333;
+        }
+        .team-tile p {
+            font-size: 0.9em;
+            color: #666;
+        }
+        @media (max-width: 768px) {
+            .team-tile {
+                width: 150px;
+                padding: 10px;
+            }
+            .team-tile img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Mental Wellness Warriors Hub Able Team</h1>
+        <p>Meet our passionate and dedicated team! Each member brings unique expertise, creativity, and commitment to driving our mission forward. Together, we strive to deliver excellence and make a meaningful impact.</p>
+    </div>
+
+    <!-- Team Profiles Section -->
+    <div class="team-container" id="teamContainer">
+        <!-- Team tiles will be injected here dynamically -->
+    </div>
+
+    <script>
+        // Sample team data
+        const teamMembers = [
+            { name: "Irene Kamuthu", position: "CEO", photo: "file:///E:/MY SITE/pictures/passport Female.jpeg"},
+            { name: "Jane Smith", position: "CTO", photo: "file:///E:/MY SITE/pictures/passport Female.jpeg" },
+            { name: "Mark Wilson", position: "Manager", photo: "file:///E:/MY SITE/pictures/passport male.jpeg" },
+            { name: "Emily Brown", position: "Developer", photo: "file:///E:/MY SITE/pictures/passport Female.jpeg" },
+            { name: "John Doe", position: "CEO", photo: "file:///E:/MY SITE/pictures/passport male.jpeg" },
+            { name: "Jane Smith", position: "CTO", photo: "file:///E:/MY SITE/pictures/passport Female.jpeg" },
+            { name: "Mark Wilson", position: "Manager", photo: "file:///E:/MY SITE/pictures/passport male.jpeg" },
+            { name: "Emily Brown", position: "Developer", photo: "file:///E:/MY SITE/pictures/passport Female.jpeg" }
+        ];
+
+        const teamContainer = document.getElementById('teamContainer');
+
+        // Dynamically create team tiles
+        teamMembers.forEach(member => {
+            const tile = document.createElement('div');
+            tile.classList.add('team-tile');
+
+            const img = document.createElement('img');
+            img.src = member.photo;
+            img.alt = `${member.name}'s photo`;
+
+            const name = document.createElement('h3');
+            name.textContent = member.name;
+
+            const position = document.createElement('p');
+            position.textContent = member.position;
+
+            tile.appendChild(img);
+            tile.appendChild(name);
+            tile.appendChild(position);
+
+            teamContainer.appendChild(tile);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mental Wellness Warriors Hub</title>
+  <style>
+    /* Global styling */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      height: 100%;
+      background-color: #ffd1dc; /* Light pink background */
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Main container layout */
+    .container {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Left Section Styling */
+    .left-section {
+      flex: 1;
+      padding: 20px;
+      background-color: #ffe4e1; /* Slightly lighter pink */
+      color: #2e217b;
+      overflow-y: auto;
+    }
+
+    /* Text Box Styling */
+    .text-box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+    }
+
+    /* Content Styling */
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #ff69b4; /* Bright pink heading */
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      margin-left: 20px;
+      font-size: 1.2em;
+    }
+
+    /* Call to Action Button Styling */
+    .cta-button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      background-color: #ff69b4;
+      color: white;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .cta-button:hover {
+      transform: scale(1.1);
+      background-color: #ff1493; /* Darker pink on hover */
+    }
+
+    /* Scrollbar Styling */
+    .left-section {
+      scrollbar-width: thin;
+      scrollbar-color: #ff69b4 #ffe4e1;
+    }
+
+    .left-section::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .left-section::-webkit-scrollbar-thumb {
+      background-color: #ff69b4;
+      border-radius: 10px;
+    }
+
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); 
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      width: 80%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      overflow-y: auto;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+      color: #ff69b4;
+    }
+
+    .close-button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .close-button:hover {
+      background-color: #ff1493;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .cta-button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <!-- Left Section -->
+      <div class="left-section">
+        <div class="text-box">
+          <h1>Welcome to Mental Wellness Warriors Hub</h1>
+          <p>The Mental Wellness Warriors Hub is a vibrant movement dedicated to helping individuals cope with day-to-day challenges using 21st-century tools and techniques. Our certified psychologists work hand in hand with the community on mental health issues.</p>
+          <p>We focus on three key categories:</p>
+          <ul>
+            <li>Women Mental Health</li>
+            <li>Youth and Children Mental Health</li>
+            <li>Men Mental Health</li>
+          </ul>
+          <p>Although mental health is a fundamental component of health, recognition of mental disorders and awareness about their importance are limited. Stigma and lack of understanding are major barriers to seeking help. Increasing understanding and overcoming stigma through strategic communications and social mobilization are crucial steps toward strengthening mental health programs. At the Mental Wellness Warriors Hub, we educate and create a diverse community where people can live without the stigma of mental health issues and talk about them freely without fear or victimization.</p>
+        </div>
+
+        <div class="text-box">
+          <h1>Mission</h1>
+          <p>To journey with individuals who feel stuck and are ready to work on change to become the best versions of themselves.</p>
+          <p>Because not all wounds are visible, we are dedicated to turning these wounds into wisdom.</p>
+        </div>
+
+        <div class="text-box">
+            <h1>Vission</h1>
+            <p>A future where people live freely without the stigma of mental health.</p>
+          </div>
+
+        <button class="cta-button" id="discoverBtn">Discover More</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Modal -->
+  <div class="modal" id="articleModal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+      <h1 id="modalTitle">A Cornerstone of Healthy Living</h1>
+      <p id="modalDescription">Mental wellness is a vital component of overall health, encompassing emotional, psychological, and social well-being. It influences how individuals think, feel, and behave in daily life, shaping their ability to cope with stress, relate to others, and make decisions.</p>
+
+      <h1>Understanding Mental Wellness</h1>
+      <p>The World Health Organization (WHO) defines mental health as "a state of well-being in which an individual realizes their own abilities, can cope with the normal stresses of life, can work productively, and is able to make a contribution to their community" (WHO, 2018).</p>
+
+      <h1>The Importance of Mental Wellness</h1>
+      <p>Mental wellness is integral to personal and societal well-being. It affects all aspects of life, including relationships, work, and physical health.</p>
+
+      <h1>The Role of Stress in Mental Wellness</h1>
+      <p>Stress is a common trigger for mental health issues. Chronic stress disrupts the body’s balance, leading to anxiety, depression, and physical illnesses like heart disease.</p>
+
+      <button class="close-button" id="closeBtn">Close</button>
+    </div>
+  </div>
+
+  <!-- JavaScript for interactive effects -->
+  <script>
+    document.getElementById('discoverBtn').addEventListener('click', function() {
+      document.getElementById('articleModal').style.display = 'flex';
+      document.getElementById('articleModal').setAttribute('aria-hidden', 'false');
+    });
+
+    document.getElementById('closeBtn').addEventListener('click', function() {
+      document.getElementById('articleModal').style.display = 'none';
+      document.getElementById('articleModal').setAttribute('aria-hidden', 'true');
+    });
+  </script>
+
+</body>
+</html>

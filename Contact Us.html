@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact Us - Mental Wellness</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header p {
+            margin-top: 10px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .contact-info, .contact-form {
+            margin-bottom: 30px;
+        }
+
+        .contact-info ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .contact-info li {
+            margin-bottom: 10px;
+        }
+
+        .contact-info a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .contact-form input, .contact-form select, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .contact-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Error message styles */
+        #error-message {
+            margin-top: 10px;
+            color: red;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ddd;
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            opacity: 0.7;
+        }
+
+        /* Custom background for social media icons */
+        .whatsapp { background-color: #25D366; }
+        .facebook { background-color: #1877F2; }
+        .x { background-color: #1D9BF0; }
+        .instagram { background-color: #C13584; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Contact Us</h1>
+            <p>We are here to help. Reach out to us for support or any questions you may have.</p>
+        </div>
+    </header>
+    
+    <main>
+        <section class="contact-info">
+            <h2>Get in Touch</h2>
+            <p>If you need immediate support, please contact us via phone or email.</p>
+            <ul>
+                <li>Phone: <a href="tel:+254728949740">+254 728 949 740</a></li>
+                <li>Email: <a href="info@mentalwellnesswarriorshub.com">info@mentalwellnesswarriorshub.com</a></li>
+                <li>Address: 123 Othaya, Nyeri-Kenya</li>
+            </ul>
+            <div id="error-message"></div>
+        </section>
+
+        <section class="contact-form">
+            <h2>Contact Form</h2>
+            <form id="contactForm" onsubmit="return validateForm()">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="subject">Subject:</label>
+                <select id="subject" name="subject">
+                    <option value="general">General Inquiry</option>
+                    <option value="support">Support Request</option>
+                    <option value="feedback">Feedback</option>
+                </select>
+
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+
+        <!-- Social Media Icons Section -->
+        <section class="social-media">
+            <h2>Connect with Us</h2>
+            <div class="social-icons">
+                <a href="https://wa.me/+254728949740" class="whatsapp" target="_blank">
+                    <img src="file:///E:/MY SITE/pictures/whatsapp.png" alt="WhatsApp" style="width: 40px; height: 40px;">
+                </a>
+                <a href="https://facebook.com/mentalwellness" class="facebook" target="_blank">
+                    <img src="file:///E:/MY SITE/pictures/facebook.png" alt="Facebook" style="width: 40px; height: 40px;">
+                </a>
+                <a href="https://twitter.com/mentalwellness" class="x" target="_blank">
+                    <img src="file:///E:/MY SITE/pictures/x.png" alt="X" style="width: 40px; height: 40px;">
+                </a>
+                <a href="https://instagram.com/mentalwellness" class="instagram" target="_blank">
+                    <img src="file:///E:/MY SITE/pictures/instagram.png" alt="Instagram" style="width: 40px; height: 40px;">
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Mental Wellness. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form validation function
+        function validateForm() {
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let message = document.getElementById('message').value;
+            let errorMessage = document.getElementById('error-message');
+
+            // Clear previous error messages
+            errorMessage.innerHTML = "";
+
+            if (name === "" || email === "" || message === "") {
+                errorMessage.innerHTML = "<p>All fields are required. Please fill in all fields.</p>";
+                return false;
+            }
+
+            if (!validateEmail(email)) {
+                errorMessage.innerHTML = "<p>Please enter a valid email address.</p>";
+                return false;
+            }
+
+            alert("Thank you for reaching out! Your message has been sent.");
+            return true; // In a real application, you would send the form data here
+        }
+
+        // Email validation function
+        function validateEmail(email) {
+            let re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            return re.test(String(email).toLowerCase());
+        }
+    </script>
+</body>
+</html>
