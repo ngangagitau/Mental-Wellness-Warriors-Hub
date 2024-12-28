@@ -62,6 +62,13 @@
             color: #f06292;
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
         /* Dropdown Styles */
         .dropdown-content {
             display: none;
@@ -238,12 +245,57 @@
         .active {
             display: block;
         }
+
+        /* Media Queries for Small Screens */
+        @media screen and (max-width: 768px) {
+            /* Show the hamburger icon and hide the menu */
+            .hamburger {
+                display: block;
+                font-size: 30px;
+                cursor: pointer;
+                margin-right: 20px;
+            }
+
+            nav ul {
+                display: none;  /* Initially hide the menu */
+                flex-direction: column;
+                width: 100%;
+                background-color: #fff;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                z-index: 100;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+                width: 100%;
+            }
+
+            nav ul li a {
+                padding: 10px 0;
+                font-size: 1.2em;
+                display: block;
+            }
+
+            /* When the menu is toggled, show it */
+            nav.active ul {
+                display: flex;
+            }
+        }
     </style>
 </head>
 <body>
 
 <header>
     <img src="pictures/logo.png" alt="Mental Wellness Warriors Hub">
+
+    <!-- Hamburger Icon for small screens -->
+    <div class="hamburger" onclick="toggleMenu()">
+        &#9776; <!-- This is the hamburger icon (three horizontal lines) -->
+    </div>
 
     <nav>
         <ul>
@@ -256,7 +308,6 @@
                     <li><a href="Gallery.html" target="_self">Gallery</a></li>
                 </ul>
             </li>
-            <!-- Change the Services link to the local path on the E: drive -->
             <li><a href="Services.html" target="_self">Services</a></li>
             <li><a href="Resources.html" target="_self">Resources</a></li>
             <li><a href="Contact Us.html" target="_self">Contact Us</a></li>
@@ -295,19 +346,17 @@
         <div class="event-box">
             <h3>Kaa Sober Mental Awareness Cycling & Tree Planting</h3>
             <p>Season I</p>
-            <p>Date: December 21, 2024 | Location: Dedan Kimathi To Mweiga Staduim</p>
+            <p>Date: December 21, 2024 | Location: Dedan Kimathi To Mweiga Stadium</p>
             <p>Pedal for peace, Cycling Towards Mental Wellbeing.</p>
         </div>
         <div class="event-box">
             <h3>Launching Of mental wellness warriors hub</h3>
-            <p>Grand Oppening</p>
+            <p>Grand Opening</p>
             <p>Date: October 1, 2024 | Location: Othaya</p>
             <p>Finding Clarity. Uncovering Solutions.</p>
         </div>
     </div>
 </section>
-
-
 
 <footer>
     <p>&copy; 2024 Mental Wellness Warriors Hub. All Rights Reserved.</p>
@@ -339,6 +388,12 @@
     setInterval(() => {
         changeSlide(1);
     }, 3000); // Change slide every 3 seconds
+
+    // Toggle the navigation menu visibility on small devices
+    function toggleMenu() {
+        const nav = document.querySelector('nav');
+        nav.classList.toggle('active');
+    }
 </script>
 
 </body>
