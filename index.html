@@ -12,6 +12,7 @@
             padding: 0;
             color: #333;
             background-color: #f4f6f9;
+            overflow-x: hidden;
         }
 
         a {
@@ -45,11 +46,12 @@
             display: flex;
             margin: 0;
             padding: 0;
+            transition: transform 0.3s ease;
         }
 
         nav ul li {
             margin: 0 15px;
-            position: relative; /* For dropdown positioning */
+            position: relative;
         }
 
         nav ul li a {
@@ -155,73 +157,6 @@
             color: #ffffff;
         }
 
-        /* Section Styles */
-        .section {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: #ffffff;
-            margin: 20px auto;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-            width: 90%;
-            max-width: 1200px;
-        }
-
-        .section h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: #555;
-        }
-
-        .section p {
-            font-size: 1em;
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Upcoming Events Styles */
-        .events-section {
-            padding: 60px 20px;
-            background-color: #f9f9f9;
-            margin: 20px auto;
-            width: 90%;
-            max-width: 1200px;
-        }
-
-        .event-box {
-            background-color: #ffffff;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        .event-box h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-
-        .event-box p {
-            color: #666;
-        }
-
-        /* Footer Styles */
-        footer {
-            background-color: #333;
-            color: #ffffff;
-            padding: 20px 0;
-            text-align: center;
-            font-size: 0.9em;
-        }
-
-        footer a {
-            color: #f06292;
-        }
-
-        footer a:hover {
-            color: #ffffff;
-        }
-
         /* Slideshow Styles */
         .slideshow-container {
             position: absolute;
@@ -246,18 +181,31 @@
             display: block;
         }
 
-        /* Media Queries for Small Screens */
+        /* Responsive Adjustments for Small Screens */
         @media screen and (max-width: 768px) {
-            /* Show the hamburger icon and hide the menu */
+            .hero {
+                height: 70vh;
+                clip-path: none;
+            }
+
+            .hero-content {
+                font-size: 0.9em;
+            }
+
+            .slideshow-container {
+                height: 70vh;
+            }
+
+            .slide {
+                object-fit: cover;
+            }
+
             .hamburger {
                 display: block;
-                font-size: 30px;
-                cursor: pointer;
-                margin-right: 20px;
             }
 
             nav ul {
-                display: none;  /* Initially hide the menu */
+                display: none;
                 flex-direction: column;
                 width: 100%;
                 background-color: #fff;
@@ -271,16 +219,13 @@
             nav ul li {
                 margin: 10px 0;
                 text-align: center;
-                width: 100%;
             }
 
             nav ul li a {
                 padding: 10px 0;
                 font-size: 1.2em;
-                display: block;
             }
 
-            /* When the menu is toggled, show it */
             nav.active ul {
                 display: flex;
             }
@@ -294,7 +239,7 @@
 
     <!-- Hamburger Icon for small screens -->
     <div class="hamburger" onclick="toggleMenu()">
-        &#9776; <!-- This is the hamburger icon (three horizontal lines) -->
+        &#9776;
     </div>
 
     <nav>
@@ -316,7 +261,6 @@
 </header>
 
 <section class="hero" id="home">
-    <!-- Slideshow as background -->
     <div class="slideshow-container">
         <img src="pictures/1V2A9992.jpg" class="slide active" alt="Slide 1">
         <img src="pictures/1V2A9308.jpg" class="slide" alt="Slide 2">
@@ -325,36 +269,10 @@
         <img src="pictures/1V2A0007.jpg" class="slide" alt="Slide 5">
     </div>
 
-    <!-- Hero Content -->
     <div class="hero-content">
         <h1>Welcome to Mental Wellness Warriors Hub</h1>
         <p>Finding Clarity. Uncovering Solutions.</p>
         <button>Get Started Today</button>
-    </div>
-</section>
-
-<!-- Replacing 'About Us' and 'Our Services' content -->
-<section class="section" id="about">
-    <h2>Events</h2>
-    <div class="events-section">
-        <div class="event-box">
-            <h3>Kaa Sober Mental Awareness Cycling & Tree Planting</h3>
-            <p>Season II</p>
-            <p>Date: January 25, 2025 | Location: Othaya</p>
-            <p>Pedal for a Clear Mind, Plant for a Green Future.</p>
-        </div>
-        <div class="event-box">
-            <h3>Kaa Sober Mental Awareness Cycling & Tree Planting</h3>
-            <p>Season I</p>
-            <p>Date: December 21, 2024 | Location: Dedan Kimathi To Mweiga Stadium</p>
-            <p>Pedal for peace, Cycling Towards Mental Wellbeing.</p>
-        </div>
-        <div class="event-box">
-            <h3>Launching Of mental wellness warriors hub</h3>
-            <p>Grand Opening</p>
-            <p>Date: October 1, 2024 | Location: Othaya</p>
-            <p>Finding Clarity. Uncovering Solutions.</p>
-        </div>
     </div>
 </section>
 
@@ -387,13 +305,22 @@
 
     setInterval(() => {
         changeSlide(1);
-    }, 3000); // Change slide every 3 seconds
+    }, 3000);
 
-    // Toggle the navigation menu visibility on small devices
     function toggleMenu() {
         const nav = document.querySelector('nav');
         nav.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
     }
+
+    document.addEventListener('click', (event) => {
+        const nav = document.querySelector('nav');
+        const hamburger = document.querySelector('.hamburger');
+        if (!nav.contains(event.target) && !hamburger.contains(event.target)) {
+            nav.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+    });
 </script>
 
 </body>
