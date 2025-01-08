@@ -491,64 +491,6 @@ menuToggle.addEventListener('click', () => {
     menu.classList.toggle('show');
 });
 </script>
-<script>
-// Script to adjust webpage layout for small screens
-(function () {
-    function adjustLayout() {
-        const viewportWidth = window.innerWidth;
 
-        // Check if the screen width is small (e.g., less than 768px for tablets)
-        if (viewportWidth < 768) {
-            document.body.style.fontSize = "14px";
-            document.body.style.padding = "10px";
-
-            // Example of resizing specific elements
-            const header = document.querySelector("header");
-            if (header) {
-                header.style.fontSize = "1.2rem";
-                header.style.padding = "10px";
-            }
-
-            const mainContent = document.querySelector("main");
-            if (mainContent) {
-                mainContent.style.margin = "0 5px";
-            }
-
-            const images = document.querySelectorAll("img");
-            images.forEach(img => {
-                img.style.width = "100%";
-                img.style.height = "auto";
-            });
-        } else {
-            // Reset styles for larger screens
-            document.body.style.fontSize = "16px";
-            document.body.style.padding = "20px";
-
-            const header = document.querySelector("header");
-            if (header) {
-                header.style.fontSize = "2rem";
-                header.style.padding = "20px";
-            }
-
-            const mainContent = document.querySelector("main");
-            if (mainContent) {
-                mainContent.style.margin = "0 auto";
-                mainContent.style.width = "80%";
-            }
-
-            const images = document.querySelectorAll("img");
-            images.forEach(img => {
-                img.style.width = "auto";
-                img.style.height = "auto";
-            });
-        }
-    }
-
-    // Run adjustLayout on page load and when resizing the browser window
-    window.addEventListener("load", adjustLayout);
-    window.addEventListener("resize", adjustLayout);
-})();
-
-</script>
 </body>
 </html>
