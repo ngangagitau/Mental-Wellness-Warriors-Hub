@@ -25,9 +25,11 @@
 
         /* Header Styles */
         header {
-            text-align: center;
             background-color: #ffffff;
             padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
@@ -36,38 +38,12 @@
 
         header img {
             height: 60px;
-            margin-bottom: 10px;
         }
 
         /* Menu Styles */
         .menu {
             display: flex;
             flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            background-color: #ffffff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .menu ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-        }
-
-        .menu ul li {
-            margin: 0 15px;
-            position: relative;
-        }
-
-        .menu ul li a {
-            font-weight: bold;
-            color: #555;
-            font-size: 1em;
-        }
-
-        .menu ul li a:hover {
-            color: #f06292;
         }
 
         .menu-toggle {
@@ -76,10 +52,28 @@
             background: none;
             border: none;
             cursor: pointer;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 1100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        nav ul li a {
+            font-weight: bold;
+            color: #555;
+            font-size: 1em;
+        }
+
+        nav ul li a:hover {
+            color: #f06292;
         }
 
         /* Dropdown Styles */
@@ -122,46 +116,6 @@
             display: block;
         }
 
-        /* Responsive Menu */
-        @media (max-width: 768px) {
-            .menu {
-                display: none;
-                flex-direction: column;
-                align-items: flex-start;
-                position: fixed;
-                top: 0;
-                left: 0;
-                height: 100vh;
-                width: 70%;
-                background-color: #ffffff;
-                box-shadow: 2px 0 6px rgba(0, 0, 0, 0.2);
-                transform: translateX(-100%);
-                transition: transform 0.3s ease-in-out;
-            }
-
-            .menu.show {
-                display: flex;
-                transform: translateX(0);
-            }
-
-            .menu ul {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .menu ul li {
-                margin: 15px 0;
-                text-align: left;
-                width: 100%;
-                padding: 10px 20px;
-            }
-
-            .menu-toggle {
-                display: block;
-                color: #333;
-            }
-        }
-
         /* Hero Section Styles */
         .hero {
             position: relative;
@@ -200,12 +154,209 @@
             border: none;
             border-radius: 25px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3 s ease;
         }
 
         .hero button:hover {
             background-color: #ba68c8;
             color: #ffffff;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #ffffff;
+            margin: 20px auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .section p {
+            font-size: 1em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .events-section {
+            padding: 60px 20px;
+            background-color: #f9f9f9;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .event-box {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .event-box h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .event-box p {
+            color: #666;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #f06292;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        /* Slideshow Styles */
+        .slideshow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .active {
+            display: block;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            header {
+                flex-wrap: wrap;
+                padding: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            .hero button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header img {
+                height: 50px;
+            }
+
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 0.9em;
+            }
+
+            .hero button {
+                padding: 10px 15px;
+                font-size: 0.8em;
+            }
+
+            .section {
+                padding: 40px 10px;
+            }
+
+            .events-section {
+                padding: 40px 10px;
+            }
+
+            .event-box {
+                margin-bottom: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            .hero h1 {
+                font-size: 1.5em;
+            }
+
+            .hero p {
+                font-size: 0.8em;
+            }
+
+            .hero button {
+                padding: 8px 12px;
+                font-size: 0.7em;
+            }
+
+            .section h2 {
+                font-size: 1.5em;
+            }
+
+            .section p {
+                font-size: 0.9em;
+            }
+
+            .events-section {
+                padding: 20px 5px;
+            }
+
+            footer {
+                font-size: 0.8em;
+            }
         }
     </style>
 </head>
@@ -213,13 +364,13 @@
 
 <header>
     <img src="pictures/logo.png" alt="Mental Wellness Warriors Hub">
-    <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
+    <button class="menu-toggle" aria-label="Toggle Menu" aria-haspopup="true" aria-expanded="false">☰</button>
     <nav class="menu">
         <ul>
             <li><a href="#home">Home</a></li>
             <li class="dropdown">
                 <a href="#about">About Us</a>
-                <ul class="dropdown-content">
+                <ul class="dropdown-content" aria-label="submenu">
                     <li><a href="AboutUs.html" target="_self">About Us</a></li>
                     <li><a href="Team.html" target="_self">Team</a></li>
                     <li><a href="Gallery.html" target="_self">Gallery</a></li>
@@ -227,16 +378,48 @@
             </li>
             <li><a href="Services.html" target="_self">Services</a></li>
             <li><a href="Resources.html" target="_self">Resources</a></li>
-            <li><a href="Contact Us.html" target="_self">Contact Us</a></li>
+            <li><a href="Contact-Us.html" target="_self">Contact Us</a></li>
         </ul>
     </nav>
 </header>
 
 <section class="hero" id="home">
+    <div class="slideshow-container">
+        <img src="pictures/1V2A9992.jpg" class="slide active" alt="Slide 1">
+        <img src="pictures/1V2A9308.jpg" class="slide" alt="Slide 2">
+        <img src="pictures/1V2A9303.jpg" class="slide" alt="Slide 3">
+        <img src="pictures/1V2A0455.jpg" class="slide" alt="Slide 4">
+        <img src="pictures/1V2A0007.jpg" class="slide" alt="Slide 5">
+    </div>
+
     <div class="hero-content">
         <h1>Welcome to Mental Wellness Warriors Hub</h1>
         <p>Finding Clarity. Uncovering Solutions.</p>
         <button>Get Started Today</button>
+    </div>
+</section>
+
+<section class="section" id="about">
+    <h2>Events</h2>
+    <div class="events-section">
+        <div class="event-box">
+            <h3>Kaa Sober Mental Awareness Cycling & Tree Planting</h3>
+            <p>Season II</p>
+            <p>Date: January 25, 2025 | Location: Othaya</p>
+            <p>Pedal for a Clear Mind, Plant for a Green Future.</p>
+        </div>
+        <div class="event-box">
+            <h3>Kaa Sober Mental Awareness Cycling & Tree Planting</h3>
+            <p>Season I</p>
+            <p>Date: December 21, 2024 | Location: Dedan Kimathi To Mweiga Stadium</p>
+            <p>Pedal for peace, Cycling Towards Mental Wellbeing.</p>
+        </div>
+        <div class="event-box">
+            <h3>Launching Of Mental Wellness Warriors Hub</h3>
+            <p>Grand Opening</p>
+            <p>Date: October 1, 2024 | Location: Othaya</p>
+            <p>Finding Clarity. Uncovering Solutions.</p>
+        </div>
     </div>
 </section>
 
@@ -245,11 +428,519 @@
 </footer>
 
 <script>
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
     const menuToggle = document.querySelector('.menu-toggle');
     const menu = document.querySelector('.menu');
 
+    function changeSlide(n) {
+        currentSlideIndex += n;
+        if (currentSlideIndex >= slides.length) {
+            currentSlideIndex = 0;
+        } else if (currentSlideIndex < 0) {
+            currentSlideIndex = slides.length - 1;
+        }
+        updateSlides();
+    }
+
+    function updateSlides() {
+        slides.forEach((slide, index) => {
+            slide.classList.remove('active');
+            if (index === currentSlideIndex) {
+                slide.classList.add('active');
+            }
+        });
+    }
+
+    setInterval(() => {
+        changeSlide(1);
+    }, 3000); // Change slide every 3 seconds
+
     menuToggle.addEventListener('click', () => {
         menu.classList.toggle('show');
+        const isExpanded = menu.classList.contains('show');
+        menuToggle.setAttribute('aria-expanded', isExpanded);
+    });
+</script>
+
+</body>
+</html> Your HTML and CSS code for the "Mental Wellness Warriors Hub" is well-structured and functional. However, there are a few improvements that can enhance readability, maintainability, and accessibility. Below are some suggestions along with the improved code:
+
+### Improvements Made:
+1. **Semantic HTML**: Ensured proper use of semantic elements, especially for the dropdown menu.
+2. **Accessibility**: Added `aria-haspopup` and `aria-expanded` attributes to the dropdown for better accessibility.
+3. **CSS Organization**: Grouped related styles together and added comments for better organization.
+4. **Consistent Naming**: Used consistent naming conventions for classes and IDs.
+5. **Fixed Dropdown Structure**: Corrected the structure of the dropdown menu to ensure proper nesting.
+6. **Improved JavaScript**: Made the slideshow functionality more robust and added comments for clarity.
+
+Here’s the improved code:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Wellness Warriors Hub</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f6f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header img {
+            height: 60px;
+        }
+
+        /* Menu Styles */
+        .menu {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5em;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        nav ul li a {
+            font-weight: bold;
+            color: #555;
+            font-size: 1em;
+        }
+
+        nav ul li a:hover {
+            color: #f06292;
+        }
+
+        /* Dropdown Styles */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            min-width: 150px;
+        }
+
+        .dropdown-content li {
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown-content li:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a {
+            color: #555;
+            padding: 10px 15px;
+            display: block;
+            font-size: 0.9em;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f4f6f9;
+            color: #f06292;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            background: #000;
+            color: #fff;
+            clip-path: ellipse(100% 90% at 50% 10%);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .hero button {
+            background-color: #ffffff;
+            color: #ba68c8;
+            padding: 15px 30px;
+            font-size: 1em;
+            border : none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero button:hover {
+            background-color: #ba68c8;
+            color: #ffffff;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #ffffff;
+            margin: 20px auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .section p {
+            font-size: 1em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .events-section {
+            padding: 60px 20px;
+            background-color: #f9f9f9;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .event-box {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .event-box h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .event-box p {
+            color: #666;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #f06292;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        /* Slideshow Styles */
+        .slideshow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .active {
+            display: block;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            header {
+                flex-wrap: wrap;
+                padding: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            .hero button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header img {
+                height: 50px;
+            }
+
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 0.9em;
+            }
+
+            .hero button {
+                padding: 10px 15px;
+                font-size: 0.8em;
+            }
+
+            .section {
+                padding: 40px 10px;
+            }
+
+            .events-section {
+                padding: 40px 10px;
+            }
+
+            .event-box {
+                margin-bottom: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            .hero h1 {
+                font-size: 1.5em;
+            }
+
+            .hero p {
+                font-size: 0.8em;
+            }
+
+            .hero button {
+                padding: 8px 12px;
+                font-size: 0.7em;
+            }
+
+            .section h2 {
+                font-size: 1.5em;
+            }
+
+            .section p {
+                font-size: 0.9em;
+            }
+
+            .events-section {
+                padding: 20px 5px;
+            }
+
+            footer {
+                font-size ```html
+                : 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="pictures/logo.png" alt="Mental Wellness Warriors Hub">
+    <button class="menu-toggle" aria-label="Toggle Menu" aria-haspopup="true" aria-expanded="false">☰</button>
+    <nav class="menu">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li class="dropdown">
+                <a href="#about">About Us</a>
+                <ul class="dropdown-content" aria-label="submenu">
+                    <li><a href="AboutUs.html" target="_self">About Us</a></li>
+                    <li><a href="Team.html" target="_self">Team</a></li>
+                    <li><a href="Gallery.html" target="_self">Gallery</a></li>
+                </ul>
+            </li>
+            <li><a href="Services.html" target="_self">Services</a></li>
+            <li><a href="Resources.html" target="_self">Resources</a></li>
+            <li><a href="Contact-Us.html" target="_self">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div class="slideshow-container">
+        <img src="pictures/1V2A9992.jpg" class="slide active" alt="Slide 1">
+        <img src="pictures/1V2A9308.jpg" class="slide" alt="Slide 2">
+        <img src="pictures/1V2A9303.jpg" class="slide" alt="Slide 3">
+        <img src="pictures/1V2A0455.jpg" class="slide" alt="Slide 4">
+        <img src="pictures/1V2A0007.jpg" class="slide" alt="Slide 5">
+    </div>
+
+    <div class="hero-content">
+        <h1>Welcome to Mental Wellness Warriors Hub</h1>
+        <p>Finding Clarity. Uncovering Solutions.</p>
+        <button>Get Started Today</button>
+    </div>
+</section>
+
+<section class="section" id="about">
+    <h2>Events</h2>
+    <div class="events-section">
+        <div class="event-box">
+            <h3>Kaa Sober Mental Awareness Cycling & Tree Planting</h3>
+            <p>Season II</p>
+            <p>Date: January 25, 2025 | Location: Othaya</p>
+            <p>Pedal for a Clear Mind, Plant for a Green Future.</p>
+        </div>
+        <div class="event-box">
+            <h3>Kaa Sober Mental Awareness Cycling & Tree Planting</h3>
+            <p>Season I</p>
+            <p>Date: December 21, 2024 | Location: Dedan Kimathi To Mweiga Stadium</p>
+            <p>Pedal for peace, Cycling Towards Mental Wellbeing.</p>
+        </div>
+        <div class="event-box">
+            <h3>Launching Of Mental Wellness Warriors Hub</h3>
+            <p>Grand Opening</p>
+            <p>Date: October 1, 2024 | Location: Othaya</p>
+            <p>Finding Clarity. Uncovering Solutions.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Mental Wellness Warriors Hub. All Rights Reserved.</p>
+</footer>
+
+<script>
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    function changeSlide(n) {
+        currentSlideIndex += n;
+        if (currentSlideIndex >= slides.length) {
+            currentSlideIndex = 0;
+        } else if (currentSlideIndex < 0) {
+            currentSlideIndex = slides.length - 1;
+        }
+        updateSlides();
+    }
+
+    function updateSlides() {
+        slides.forEach((slide, index) => {
+            slide.classList.remove('active');
+            if (index === currentSlideIndex) {
+                slide.classList.add('active');
+            }
+        });
+    }
+
+    setInterval(() => {
+        changeSlide(1);
+    }, 3000); // Change slide every 3 seconds
+
+    menuToggle.addEventListener('click', () => {
+        menu.classList.toggle('show');
+        const isExpanded = menu.classList.contains('show');
+        menuToggle.setAttribute('aria-expanded', isExpanded);
+    ```html
     });
 </script>
 
