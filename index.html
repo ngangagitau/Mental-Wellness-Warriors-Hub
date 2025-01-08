@@ -5,47 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mental Wellness Warriors Hub</title>
     <style>
-        .menu {
-    display: flex;
-    flex-direction: row;
-}
-
-.menu-toggle {
-    display: none;
-    font-size: 1.5em;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-@media (max-width: 768px) {
-    .menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #ffffff;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .menu ul {
-        flex-direction: column;
-        padding: 0;
-    }
-
-    .menu ul li {
-        margin: 10px 0;
-        text-align: center;
-    }
-
-    .menu.show {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-}
-
         /* General Styles */
         body {
             font-family: 'Arial', sans-serif;
@@ -68,9 +27,7 @@
         header {
             background-color: #ffffff;
             padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
@@ -79,18 +36,27 @@
 
         header img {
             height: 60px;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         nav ul {
             list-style: none;
-            display: flex;
-            margin: 0;
             padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         nav ul li {
-            margin: 0 15px;
-            position: relative;
+            margin: 5px 0;
         }
 
         nav ul li a {
@@ -103,43 +69,48 @@
             color: #f06292;
         }
 
-        .dropdown-content {
+        .menu-toggle {
             display: none;
+            font-size: 1.5em;
+            background: none;
+            border: none;
+            cursor: pointer;
             position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #ffffff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            min-width: 150px;
+            top: 15px;
+            left: 15px;
         }
 
-        .dropdown-content li {
-            border-bottom: 1px solid #eee;
-        }
+        /* Menu Styles for Small Screens */
+        @media (max-width: 768px) {
+            .menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 250px;
+                height: 100%;
+                background-color: #ffffff;
+                box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+                padding-top: 60px;
+                gap: 15px;
+                transition: left 0.3s ease-in-out;
+            }
 
-        .dropdown-content li:last-child {
-            border-bottom: none;
-        }
+            .menu.show {
+                left: 0;
+            }
 
-        .dropdown-content a {
-            color: #555;
-            padding: 10px 15px;
-            display: block;
-            font-size: 0.9em;
-            text-decoration: none;
-        }
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 20px;
+            }
 
-        .dropdown-content a:hover {
-            background-color: #f4f6f9;
-            color: #f06292;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
+            .menu-toggle {
+                display: block;
+            }
         }
 
         /* Hero Section Styles */
@@ -151,15 +122,11 @@
             color: #fff;
             clip-path: ellipse(100% 90% at 50% 10%);
             overflow: hidden;
-        }
-
-        .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             text-align: center;
-            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .hero h1 {
@@ -212,31 +179,6 @@
             line-height: 1.6;
         }
 
-        .events-section {
-            padding: 60px 20px;
-            background-color: #f9f9f9;
-            margin: 20px auto;
-            width: 90%;
-            max-width: 1200px;
-        }
-
-        .event-box {
-            background-color: #ffffff;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        .event-box h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-
-        .event-box p {
-            color: #666;
-        }
-
         /* Footer Styles */
         footer {
             background-color: #333;
@@ -253,243 +195,46 @@
         footer a:hover {
             color: #ffffff;
         }
-
-        /* Slideshow Styles */
-        .slideshow-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .slide {
-            display: none;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .active {
-            display: block;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 1024px) {
-            header {
-                flex-wrap: wrap;
-                padding: 15px;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            nav ul li {
-                margin: 10px;
-            }
-
-            .hero h1 {
-                font-size: 2.5em;
-            }
-
-            .hero p {
-                font-size: 1em;
-            }
-
-            .hero button {
-                padding: 10px 20px;
-                font-size: 0.9em;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header img {
-                height: 50px;
-            }
-
-            .hero h1 {
-                font-size: 2em;
-            }
-
-            .hero p {
-                font-size: 0.9em;
-            }
-
-            .hero button {
-                padding: 10px 15px;
-                font-size: 0.8em;
-            }
-
-            .section {
-                padding: 40px 10px;
-            }
-
-            .events-section {
-                padding: 40px 10px;
-            }
-
-            .event-box {
-                margin-bottom: 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header {
-                flex-direction: column;
-                align-items: center;
-                padding: 10px;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav ul li {
-                margin: 5px 0;
-            }
-
-            .hero h1 {
-                font-size: 1.5em;
-            }
-
-            .hero p {
-                font-size: 0.8em;
-            }
-
-            .hero button {
-                padding: 8px 12px;
-                font-size: 0.7em;
-            }
-
-            .section h2 {
-                font-size: 1.5em;
-            }
-
-            .section p {
-                font-size: 0.9em;
-            }
-
-            .events-section {
-                padding: 20px 5px;
-            }
-
-            footer {
-                font-size: 0.8em;
-            }
-        }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="pictures/logo.png" alt="Mental Wellness Warriors Hub">
     <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
-<nav class="menu">
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li class="dropdown">
-            <a href="#about">About Us</a>
-            <li class="dropdown-content">
-                <li><a href="AboutUs.html" target="_self">About Us</a></li>
-                <li><a href="Team.html" target="_self">Team</a></li>
-                <li><a href="Gallery.html" target="_self">Gallery</a></li>
-            </li>
-        </li>
-        <li><a href="Services.html" target="_self">Services</a></li>
-        <li><a href="Resources.html" target="_self">Resources</a></li>
-        <li><a href="Contact Us.html" target="_self">Contact Us</a></li>
-    </ul>
-</nav>
+    <img src="pictures/logo.png" alt="Mental Wellness Warriors Hub">
+    <nav class="menu">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="Resources.html">Resources</a></li>
+            <li><a href="Contact Us.html">Contact Us</a></li>
+        </ul>
+    </nav>
 </header>
 
 <section class="hero" id="home">
-    <!-- Slideshow as background -->
-    <div class="slideshow-container">
-        <img src="pictures/1V2A9992.jpg" class="slide active" alt="Slide 1">
-        <img src="pictures/1V2A9308.jpg" class="slide" alt="Slide 2">
-        <img src="pictures/1V2A9303.jpg" class="slide" alt="Slide 3">
-        <img src="pictures/1V2A0455.jpg" class="slide" alt="Slide 4">
-        <img src="pictures/1V2A0007.jpg" class="slide" alt="Slide 5">
-    </div>
-
-    <!-- Hero Content -->
-    <div class="hero-content">
-        <h1>Welcome to Mental Wellness Warriors Hub</h1>
-        <p>Finding Clarity. Uncovering Solutions.</p>
-        <button>Get Started Today</button>
-    </div>
+    <h1>Welcome to Mental Wellness Warriors Hub</h1>
+    <p>Finding Clarity. Uncovering Solutions.</p>
+    <button>Get Started Today</button>
 </section>
 
-<!-- Replacing 'About Us' and 'Our Services' content -->
 <section class="section" id="about">
     <h2>Events</h2>
-    <div class="events-section">
-        <div class="event-box">
-            <h3>Kaa Sober Mental Awareness Cycling & Tree Planting</h3>
-            <p>Season II</p>
-            <p>Date: January 25, 2025 | Location: Othaya</p>
-            <p>Pedal for a Clear Mind, Plant for a Green Future.</p>
-        </div>
-        <div class="event-box">
-            <h3>Kaa Sober Mental Awareness Cycling & Tree Planting</h3>
-            <p>Season I</p>
-            <p>Date: December 21, 2024 | Location: Dedan Kimathi To Mweiga Staduim</p>
-            <p>Pedal for peace, Cycling Towards Mental Wellbeing.</p>
-        </div>
-        <div class="event-box">
-            <h3>Launching Of mental wellness warriors hub</h3>
-            <p>Grand Oppening</p>
-            <p>Date: October 1, 2024 | Location: Othaya</p>
-            <p>Finding Clarity. Uncovering Solutions.</p>
-        </div>
-    </div>
+    <p>Stay tuned for upcoming events!</p>
 </section>
-
-
 
 <footer>
     <p>&copy; 2024 Mental Wellness Warriors Hub. All Rights Reserved.</p>
 </footer>
 
 <script>
-    let currentSlideIndex = 0;
-    const slides = document.querySelectorAll('.slide');
-
-    function changeSlide(n) {
-        currentSlideIndex += n;
-        if (currentSlideIndex >= slides.length) {
-            currentSlideIndex = 0;
-        } else if (currentSlideIndex < 0) {
-            currentSlideIndex = slides.length - 1;
-        }
-        updateSlides();
-    }
-
-    function updateSlides() {
-        slides.forEach((slide, index) => {
-            slide.classList.remove('active');
-            if (index === currentSlideIndex) {
-                slide.classList.add('active');
-            }
-        });
-    }
-
-    setInterval(() => {
-        changeSlide(1);
-    }, 3000); // Change slide every 3 seconds
     const menuToggle = document.querySelector('.menu-toggle');
-const menu = document.querySelector('.menu');
+    const menu = document.querySelector('.menu');
 
-menuToggle.addEventListener('click', () => {
-    menu.classList.toggle('show');
-});
+    menuToggle.addEventListener('click', () => {
+        menu.classList.toggle('show');
+    });
 </script>
 
 </body>
