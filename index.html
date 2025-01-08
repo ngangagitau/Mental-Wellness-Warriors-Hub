@@ -492,6 +492,40 @@ menuToggle.addEventListener('click', () => {
 });
 
 </script>
+<script>
+// JavaScript to dynamically adjust styles for small screens
+function adjustForSmallScreen() {
+    if (window.innerWidth <= 768) {
+        document.body.style.fontSize = "14px";
 
+        const heroButton = document.querySelector('.hero button');
+        if (heroButton) {
+            heroButton.style.padding = "10px 15px";
+            heroButton.style.fontSize = "0.8em";
+        }
+
+        const eventBoxes = document.querySelectorAll('.event-box');
+        eventBoxes.forEach((box) => {
+            box.style.marginBottom = "15px";
+        });
+    } else {
+        document.body.style.fontSize = "";
+        const heroButton = document.querySelector('.hero button');
+        if (heroButton) {
+            heroButton.style.padding = "";
+            heroButton.style.fontSize = "";
+        }
+
+        const eventBoxes = document.querySelectorAll('.event-box');
+        eventBoxes.forEach((box) => {
+            box.style.marginBottom = "";
+        });
+    }
+}
+
+// Run adjustment on page load and window resize
+window.addEventListener('DOMContentLoaded', adjustForSmallScreen);
+window.addEventListener('resize', adjustForSmallScreen);
+</script>
 </body>
 </html>
